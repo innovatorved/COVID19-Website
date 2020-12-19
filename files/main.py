@@ -9,9 +9,15 @@ from flask import render_template ,redirect ,url_for
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/' , methods = ['GET','POST']))
 def index():
-    return redirect(url_for("login"))
+    if request.method == 'POSt':
+        if 'name' in request.form and 'email' in request.form:
+            username = request.form['name']
+	    password = request.form['email']
+	    print(name)
+	    print(email)
+    return render_template("index.html")
 
 '''
 @app.route('/login')
