@@ -1,4 +1,4 @@
-pip==20.2.1
+pip==20.3.3
 cachetools==4.2.0
 certifi==2020.12.5
 chardet==4.0.0
