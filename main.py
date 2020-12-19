@@ -29,6 +29,10 @@ def index():
 def dataAll():
 	return jsonify(data)
 
+@app.errorhandler(500)
+def page_not_found(e):
+    return render_template('500.html'), 404
+
 @app.route('/api/<string:n>/<string:m>/')
 def add(n,m):
       pass
