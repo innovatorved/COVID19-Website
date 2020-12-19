@@ -1,0 +1,3 @@
+setup(
+    name='CoronaUpdate',
+...
