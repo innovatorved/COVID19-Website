@@ -32,15 +32,16 @@ def index():
 def dataAll():
 	return jsonify(data)
 
+'''
 @app.errorhandler(500)
 def page_not_found(e):
     return render_template('500.html'), 404
+'''
 
 # inbuilt function which takes error as parameter
 @app.errorhandler(404)  
-def not_found(e): 
-    # defining function
-    return render_template("404.html")
+def notfound(e):
+    return app.send_static_file("error.html")
 
 @app.route('/api/<string:n>/<string:m>/')
 def add(n,m):

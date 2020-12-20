@@ -1,0 +1,57 @@
+
+body{
+  background:#2F3242;  
+}
+svg{
+  margin:0px 0px;
+  padding:0px;
+}
+#hexagon-1, #hexagon-2, #hexagon-3,#hexagon-4,#hexagon-5,#hexagon-6,#hexagon-8,#hexagon-9{
+  animation: float 1s infinite ease-in-out alternate;
+}
+#hexagon-2{
+  animation-delay:0.2s;
+}
+
+#hexagon-3,hexagon-9{
+  animation-delay:0.4s;
+}
+
+#hexagon-4,#hexagon-8{
+  animation-delay:0.6s;
+}
+
+#hexagon-5{
+  animation-delay:0.8s;
+}
+#hexagon-6{
+  animation-delay:0.2s;
+}
+
+@keyframes float{
+
+  100%{
+    transform: translateY(10px);
+  }
+
+
+}
+
+
+#message-box{
+  /*background:red;*/
+  height:200px;
+  width:350px;
+  position:absolute;
+  top:250px;
+  left:500px;
+  padding:5px;  
+  text-align: center;
+  vertical-align:middle;
+  color:#ddd;
+  font-size:1.5em;
+  font-family: corbel;
+}
+#message-box p{
+  animation: float 1s infinite ease-in-out alternate;
+}
