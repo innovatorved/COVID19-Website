@@ -8,13 +8,14 @@ from EmailSend import email , send
 #from time import sleep
 # gives covid data
 from CoronaData import done
-from datetime import datetime
+#from datetime import datetime
 
 # for multi processing
 # from multiprocessing import Process
 
 # list name
 data = []
+maildata = set()
 
 app = Flask(__name__, static_url_path='')
 
@@ -29,10 +30,11 @@ def index():
 			mail = request.form['email']
 			email(name,mail)
 			global data
+			maildata.add(mail)
 			data.append({"name":name , "email":mail})
 			# print(data)
-			
-			
+			return "<script>window.alert('Successfully Registered'); window.location.href = '/';</script>"
+			#return app.send_static_file("index.html")
 		# else:
                         # print("")
 	return app.send_static_file("index.html")
@@ -52,25 +54,19 @@ def page_not_found(e):
 def notfound(e):
         return app.send_static_file("error.html")
 
-@app.route('/api/<string:n>/')
-def add(n):
+@app.route('/api/go/')
+def add():
         l = done()
-        for x in data:
-                em = x['email']
-                send(l,em)
+        for x in maildata:
+                send(l,x)
                 #print("done")
-        return "Done Sir"
+        return "<script>window.alert('Done Sir'); window.location.href = '/';</script>" 
 
-def work():
-        print("in")
-        print('in2')
-        global data
-        l = done()
-        for x in data:
-                em = x['email']
-                send(l,em)
-                print("done")
-        sleep(5)
+
+@app.route('/api/rm/<string:n>/')
+def remove(n):
+        maildata.remove(n)
+        return "<script>window.alert('Succesfully UnSubscribed'); window.location.href = '/';</script>" 
 
 
 if __name__ == '__main__':

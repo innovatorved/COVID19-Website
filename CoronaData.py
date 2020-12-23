@@ -59,6 +59,7 @@ def retry():
             
     # [['Andaman and Nicobar Islands', '88', '4875', '4732', '61'],
     # ------------------------------------------------------------------------------------
+    '''
     time = datetime.now()
     string = str(time)
     time = string.replace(':',' ')
@@ -68,7 +69,7 @@ def retry():
         file.write('["State_name" , "Active_cases" , "Positive" , "Cured" , "Death" ]' +"\n")
         for info in data_Container:
            file.write(str(info)+"\n")
-
+    '''
     # -------------------------------------------------------------
     # data distributed into parts
     for x in data_Container:
