@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Corona Update On Your Mail</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<script type="text/javascript">
+        function alertt()
+        {
+            window.alert('Sucessfully Registered');
+            //window.location.href='Registration.html';
+        }
+    </script>
+</head>
+<body>
+	<form action="" method="post">
+        <label style="font-size: 30px; padding-right:20px;">Name : </label>&nbsp
+        <input type="name" name="name" placeholder="Your Name" required/>
+    	</br>
+    	<label style="font-size:30px; padding-right:20px;">Email : </label>
+        <input type="email" name="email" placeholder="info@gmail.com" required />
+        </br></br>
+        <input type="submit" value="Submit" onclick="window.alert('Sucessfully Registered');" />
+    </form>
+</body>
+</html>
