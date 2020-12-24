@@ -39,7 +39,7 @@ def index():
                         # print("")
 	return app.send_static_file("index.html")
 
-@app.route('/data')
+@app.route('/data/')
 def dataAll():
 	return jsonify(data)
 
@@ -51,6 +51,10 @@ def page_not_found(e):
 
 # inbuilt function which takes error as parameter
 @app.errorhandler(404)  
+def notfound(e):
+        return app.send_static_file("error.html")
+
+@app.errorhandler(500)  
 def notfound(e):
         return app.send_static_file("error.html")
 
@@ -67,6 +71,12 @@ def add():
 def remove(n):
         maildata.remove(n)
         return "<script>window.alert('Succesfully UnSubscribed'); window.location.href = '/';</script>" 
+
+@app.route('/api/del/')
+def dell():
+        data.clear()
+        maildata.clear()
+        return "<script>window.alert('All Data Clear'); window.location.href = '/';</script>" 
 
 
 if __name__ == '__main__':
