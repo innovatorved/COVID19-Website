@@ -41,6 +41,8 @@ def send(link , mail):
     link1 = link[0]
     link2 = link[1]
     link3 = link[2]
+    link4 = link[3]
+    link5 = link[4]
     #emailMsg = Msg
     Message = MIMEMultipart()
     Message['to'] = mail
@@ -58,6 +60,12 @@ def send(link , mail):
     Message.attach(MIMEText(html_body_tag , 'html'))
 
     html_body_tag = "<body style='text-align: center;'>"+"<h2>All Detail - Pie Chart</h2><img src= "+link3+"width='250' height='250'>"+"</br></br></body>"
+    Message.attach(MIMEText(html_body_tag , 'html'))
+
+    html_body_tag = "<body style='text-align: center;'>"+"<h2>Plot</h2><img src= "+link4+"width='250' height='250'>"+"</br></br></body>"
+    Message.attach(MIMEText(html_body_tag , 'html'))
+
+    html_body_tag = "<body style='text-align: center;'>"+"<h2>Covid19 Prediction</h2><img src= "+link5+"width='250' height='250'>"+"</br></br></body>"
     Message.attach(MIMEText(html_body_tag , 'html'))
     
     raw_string = base64.urlsafe_b64encode(Message.as_bytes()).decode()
