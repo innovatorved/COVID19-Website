@@ -1,4 +1,5 @@
   applications:
   - name: CoronaUpdate
     random-route: true
-    memory: 256M
+    memory: 128M
+    instances: 2

@@ -57,7 +57,7 @@ def send(link , mail):
     html_body_tag = "<body style='text-align: center;'>"+"<h2>Recovered Cases</h2><img src= "+link2+"width='250' height='250'>"+"</br></br></body>"
     Message.attach(MIMEText(html_body_tag , 'html'))
 
-    html_body_tag = "<body style='text-align: center;'>"+"<h2>Death</h2><img src= "+link3+"width='250' height='250'>"+"</br></br></body>"
+    html_body_tag = "<body style='text-align: center;'>"+"<h2>All Detail - Pie Chart</h2><img src= "+link3+"width='250' height='250'>"+"</br></br></body>"
     Message.attach(MIMEText(html_body_tag , 'html'))
     
     raw_string = base64.urlsafe_b64encode(Message.as_bytes()).decode()
