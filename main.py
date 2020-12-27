@@ -7,7 +7,7 @@ import os
 from EmailSend import email , send
 #from time import sleep
 # gives covid data
-from CoronaDataNew import done
+from CoronaData import done
 #from datetime import datetime
 
 # for multi processing

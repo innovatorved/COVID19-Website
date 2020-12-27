@@ -224,7 +224,7 @@ def retry():
     # dataprint = {}
     add = ""
     for x in range (0, 15):
-    add = add + str(list(prediction_dates)[x])[0:10]+" : "+str(pred[x])+"\n"
+        add = add + str(list(prediction_dates)[x])[0:10]+" : "+str(pred[x])+"\n"
     x = x + 1
     plt.plot_date(y= pred,x= prediction_dates,linestyle ='dashed',color = '#ff9999',label = add + "\nNote : Please Ignore the dot value it is a part of Calculation \n")
     add2 = str(list(prediction_dates)[0])[0:10]+" : "+ str(list(enumerate(data['y']))[-1][1])
