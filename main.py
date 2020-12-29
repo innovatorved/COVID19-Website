@@ -10,12 +10,39 @@ from EmailSend import email , send
 from CoronaData import done
 #from datetime import datetime
 
+# database lib
+from cloudant import Cloudant
+from cloudant.result import Result
+
 # for multi processing
 # from multiprocessing import Process
 
 # list name
-data = []
+# data = []
 maildata = set()
+
+# ---------------------------------------------------------------
+# parameters for cloudant database
+
+api = "mtFmNq2TppQsnUV2o8OQqcYEbt1cNnKmUWacbJ9AGK_E"
+
+url_link = "https://b9932f06-c0c7-4666-a9bf-72877bb23d13-bluemix.cloudantnosqldb.appdomain.cloud"
+
+# connect
+client = Cloudant.iam(None , api , url = url_link , connect=True)
+
+# Access a database
+print("Accessing the data . . .")
+
+db = client['info']
+res = Result(db.all_docs, include_docs=True)
+
+for x in res:
+        maildata.add(x['doc']['email'])
+print("__Done__")
+
+
+# ---------------------------------------------------------------
 
 app = Flask(__name__, static_url_path='')
 
@@ -28,13 +55,17 @@ def index():
 		if 'name' in request.form and 'email'  in request.form:
 			name = request.form['name']
 			mail = request.form['email']
-			email(name,mail)
-			global data
+			
+			if mail in maildata: return "<script>window.alert('Mail is Already Registered'); window.location.href = '/';</script>"
+                            
+			detial = { 'name': name , "email" : mail}
+
+			# Create a document using the Database API
+			doc = db.create_document(detial)
 			maildata.add(mail)
-			data.append({"name":name , "email":mail})
-			# print(data)
+			email(name,mail)
 			return "<script>window.alert('Successfully Registered'); window.location.href = '/';</script>"
-			#return app.send_static_file("index.html")
+			# return app.send_static_file("index.html")
 		# else:
                         # print("")
 	return app.send_static_file("index.html")
@@ -64,13 +95,15 @@ def add():
         for x in maildata:
                 send(l,x)
                 #print("done")
+        #maildata.clear()
         return "<script>window.alert('Done Sir'); window.location.href = '/';</script>" 
 
-
+'''
 @app.route('/api/rm/<string:n>/')
 def remove(n):
         maildata.remove(n)
         return "<script>window.alert('Succesfully UnSubscribed'); window.location.href = '/';</script>" 
+
 
 @app.route('/api/del/')
 def dell():
@@ -78,7 +111,7 @@ def dell():
         maildata.clear()
         return "<script>window.alert('All Data Clear'); window.location.href = '/';</script>" 
 
-
+'''
 if __name__ == '__main__':
         # host='0.0.0.0',
         app.run(host='0.0.0.0',port=port ,debug = True , use_reloader=False)
