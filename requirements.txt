@@ -1,4 +1,5 @@
 pip==20.3.3
+cloudant==2.14.0
 Flask==1.1.2
 google-api-core==1.24.1
 google-api-python-client==1.12.8
