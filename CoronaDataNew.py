@@ -14,7 +14,7 @@ import json
 
 # importing the required libraries
 import pandas as pd
-
+import numpy as np
 # change image into url
 from imgUpload import imgUrl
 # importing the required libraries
@@ -86,6 +86,12 @@ def retry():
         confirm.append(change_to_int(x[2]))
         Cured.append(change_to_int(x[3]))
         death.append(change_to_int(x[4]))
+
+    name = np.array(name)
+    active = np.array(active,dtype = "int32")
+    Cured = np.array(Cured,dtype = "int32")
+    confirm = np.array(confirm,dtype = "int32")
+    death = np.array(death,dtype = "int32")
 
     '''
     table = PrettyTable()

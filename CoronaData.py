@@ -18,6 +18,7 @@ import pandas as pd
 # change image into url
 from imgUpload import imgUrl
 
+import numpy as np
 # -------------------------------------------------------------------------
 # -------------------------------------------------------------------------
 
@@ -79,6 +80,12 @@ def retry():
         Cured.append(change_to_int(x[3]))
         death.append(change_to_int(x[4]))
 
+    name = np.array(name)
+    active = np.array(active,dtype = "int32")
+    Cured = np.array(Cured,dtype = "int32")
+    confirm = np.array(confirm,dtype = "int32")
+    death = np.array(death,dtype = "int32")
+    
     '''
     table = PrettyTable()
     table.field_names = (new_column)
@@ -139,6 +146,7 @@ def retry():
     plt.rc('font', size = 12) 
     plt.title('Nationwide total Active,\n Confirmed, Cured and Deceased Cases', fontsize = 16)
     plt.savefig('img/death.jpg')
+    
 #plt.show()
 
 # ----------------------------------------------------------------------------------------------------------------------
