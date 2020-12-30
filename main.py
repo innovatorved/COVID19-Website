@@ -7,7 +7,7 @@ import os
 from EmailSend import email , send
 #from time import sleep
 # gives covid data
-from CoronaData import done
+from CoronaData import done , retry
 #from datetime import datetime
 
 # database lib
@@ -69,12 +69,12 @@ def index():
 		# else:
                         # print("")
 	return app.send_static_file("index.html")
-
+'''
 @app.route('/data/')
 def dataAll():
 	return jsonify(data)
 
-'''
+
 @app.errorhandler(500)
 def page_not_found(e):
     return render_template('500.html'), 404
@@ -91,6 +91,7 @@ def notfound(e):
 
 @app.route('/api/go/')
 def add():
+        retry()
         l = done()
         for x in maildata:
                 send(l,x)
@@ -114,7 +115,7 @@ def dell():
 '''
 if __name__ == '__main__':
         # host='0.0.0.0',
-        app.run(port=port ,debug = True , use_reloader=False)
+        app.run(host='0.0.0.0',port=port ,debug = True , use_reloader=False)
 
 # release the data
 
