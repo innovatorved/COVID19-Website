@@ -11,19 +11,24 @@ from CoronaData import done , retry
 #from datetime import datetime
 
 # database lib
+from dbinfo import databaseCloudantExatract , databaseCloudantAdd
+
+"""
+# database lib
 from cloudant import Cloudant
 from cloudant.result import Result
+"""
 
 # for multi processing
 # from multiprocessing import Process
 
 # list name
 # data = []
-maildata = set()
+# maildata = set()
 
 # ---------------------------------------------------------------
 # parameters for cloudant database
-
+'''
 api = "mtFmNq2TppQsnUV2o8OQqcYEbt1cNnKmUWacbJ9AGK_E"
 
 url_link = "https://b9932f06-c0c7-4666-a9bf-72877bb23d13-bluemix.cloudantnosqldb.appdomain.cloud"
@@ -40,9 +45,13 @@ res = Result(db.all_docs, include_docs=True)
 for x in res:
         maildata.add(x['doc']['email'])
 print("__Done__")
-
+'''
 
 # ---------------------------------------------------------------
+# Exract Information From Database
+maildata = databaseCloudantExatract()
+
+# --------------------------------------------------------------
 
 app = Flask(__name__, static_url_path='')
 
@@ -56,12 +65,13 @@ def index():
 			name = request.form['name']
 			mail = request.form['email']
 			
-			if mail in maildata: return "<script>window.alert('Mail is Already Registered'); window.location.href = '/';</script>"
-                            
-			detial = { 'name': name , "email" : mail}
-
-			# Create a document using the Database API
-			doc = db.create_document(detial)
+			if mail in maildata: return "<script>window.alert('E-Mail is Already Registered'); window.location.href = '/';</script>"               
+			# detial = { 'name': name , "email" : mail}
+			#   doc = db.create_document(detial)
+			
+			# Use databaseCloudantAdd() - fun to add data in database
+			databaseCloudantAdd(name , mail)
+			
 			maildata.add(mail)
 			email(name,mail)
 			return "<script>window.alert('Successfully Registered'); window.location.href = '/';</script>"
