@@ -30,7 +30,7 @@ def email(name , email):
 
 
 
-def send(link , mail):
+def send(link , mail , l):
     """
 
     two parameter passes list of three links and email id
@@ -63,13 +63,14 @@ def send(link , mail):
 
     html_body_tag = "<body style='text-align: center;'>"+"<h2>All Detail - Pie Chart</h2><img src= "+link3+"width='250' height='250'>"+"</br></br></body>"
     Message.attach(MIMEText(html_body_tag , 'html'))
-    '''
-    html_body_tag = "<body style='text-align: center;'>"+"<h2>Plot</h2><img src= "+link4+"width='250' height='250'>"+"</br></br></body>"
-    Message.attach(MIMEText(html_body_tag , 'html'))
+    
+    if l != None:
+        html_body_tag = "<body style='text-align: center;'>"+"<h2>Plot</h2><img src= "+l[0]+"width='250' height='250'>"+"</br></br></body>"
+        Message.attach(MIMEText(html_body_tag , 'html'))
 
-    html_body_tag = "<body style='text-align: center;'>"+"<h2>Covid19 Prediction</h2><img src= "+link5+"width='250' height='250'>"+"</br></br></body>"
-    Message.attach(MIMEText(html_body_tag , 'html'))
-    '''
+        html_body_tag = "<body style='text-align: center;'>"+"<h2>Covid19 Prediction</h2><img src= "+l[1]+"width='250' height='250'>"+"</br></br></body>"
+        Message.attach(MIMEText(html_body_tag , 'html'))
+
 
     html_body_tag = "<body style='text-align: center;'>"+"<br><br>If You Want to Unsubscribe from CoronaUpdate WebApp<br>Send 'Unsubscribe' at<br>coronaupdate.now@gmail.com</body>"
     Message.attach(MIMEText(html_body_tag , 'html'))

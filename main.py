@@ -104,8 +104,8 @@ def add():
         retry()
         l = done()
         for x in maildata:
-                send(l,x)
-                #print("done")
+                send(l , x , link)
+                print("done")
         #maildata.clear()
         return "<script>window.alert('Done Sir'); window.location.href = '/';</script>" 
 
@@ -123,6 +123,23 @@ def dell():
         return "<script>window.alert('All Data Clear'); window.location.href = '/';</script>" 
 
 '''
+link = None
+link4 = None
+link5 = None
+
+@app.route('/senddata', methods=['POST'])
+def testfn():
+    if request.method == 'POST':
+        #print()  # parse as JSON
+        val = request.get_json()
+        
+        global link , link4, link5
+        link4 = val['link4']
+        link5 = val['link5']
+        link = [link4 , link5]
+        return 'Sucesss', 200
+
+
 if __name__ == '__main__':
         # host='0.0.0.0',
         app.run(host='0.0.0.0',port=port ,debug = True , use_reloader=False)
