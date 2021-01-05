@@ -7,6 +7,7 @@ import numpy as np
 from base64 import b64encode
 from json import loads
 
+import time
 
 from fbprophet import Prophet
 from fbprophet.plot import plot_plotly, add_changepoints_to_plot
@@ -98,7 +99,7 @@ def predict():
         add = add + str(list(prediction_dates)[x])[0:10]+" : "+str(pred[x])+"\n"
     x = x + 1
     plt.plot_date(y= pred,x= prediction_dates,linestyle ='dashed',color = '#ff9999',label = add + "\nNote : Please Ignore the dot value it is a part of Calculation \n")
-    add2 = str(list(prediction_dates)[0])[0:10]+" : "+ str(list(enumerate(data['y']))[-1][1])
+    add2 = str(time.strftime("%Y-%m-%d",time.localtime()))+" : "+ str(list(enumerate(data['y']))[-1][1])
 
     plt.plot_date(y=data['y'],x=data['ds'],linestyle = '-',color = 'blue',label = "Actual " + add2)
     plt.legend()

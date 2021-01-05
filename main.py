@@ -47,6 +47,10 @@ for x in res:
 print("__Done__")
 '''
 
+link = None
+link4 = None
+link5 = None
+
 # ---------------------------------------------------------------
 # Exract Information From Database
 maildata = databaseCloudantExatract()
@@ -123,19 +127,19 @@ def dell():
         return "<script>window.alert('All Data Clear'); window.location.href = '/';</script>" 
 
 '''
-link = None
-link4 = None
-link5 = None
+
 
 @app.route('/senddata', methods=['POST'])
 def testfn():
     if request.method == 'POST':
         #print()  # parse as JSON
+        val = None
         val = request.get_json()
         
         global link , link4, link5
         link4 = val['link4']
         link5 = val['link5']
+        link = None
         link = [link4 , link5]
         return 'Sucesss', 200
 
