@@ -3,6 +3,7 @@ from flask import Flask
 from flask import request
 import requests
 from flask import render_template ,redirect ,url_for ,jsonify
+# from flask import render_template ,redirect ,url_for ,jsonify
 import os
 from EmailSend import email , send
 #from time import sleep
@@ -83,7 +84,9 @@ def index():
 		# else:
                         # print("")
 	return app.send_static_file("index.html")
+
 '''
+
 @app.route('/data/')
 def dataAll():
 	return jsonify(data)
