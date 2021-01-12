@@ -2,12 +2,39 @@
 <html>
 <head>
 <meta charset="utf-8">
+
 <meta name="google-site-verification" content="SWKe3rQ2VqxaJPK6gxfjD-Dn-XmlzBrxZiJbgJh97pQ" />
 <title>Corona Update On Your Mail</title>
+<meta name="description" content="CoronaUpdate is non-profit tool that gives the Update of COVID19 in India and its States. and also predicts the next 15 days COVID19 Situation in India.
+We send daily Update of COVID19 situation to Clients Mail .
+In the form of Plots and Bars. For easily Understand and Seeing">
 
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+<!--  Analystic Library -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-187040399-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-187040399-1');
+</script>
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-187040399-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='/css/animate.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='/css/font-awesome.min.css') }}">
 
@@ -17,10 +44,10 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='/css/owl.theme.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='/css/owl.transitions.css') }}">
 
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,100,200,300,500,600,800,900' rel='stylesheet' type='text/css'>
 </head>
+
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 <div class="main-header" id="main-header">
   <nav class="navbar mynav navbar-fixed-top">
@@ -145,10 +172,10 @@
         <h3>Prevention</h3>
         <div class="row">
           <div class="col-md-6 col-sm-6">
-            <div class="portfolio-item"> <a href="#"> <img class="img-portfolio img-responsive" src="https://i.ibb.co/4m6dtWc/4800678.jpg"> </a> </div>
+            <div class="portfolio-item"> <a href="#"> <img class="img-portfolio img-responsive" src="https://i.ibb.co/WcGg9pW/girl.jpg"> </a> </div>
           </div>
           <div class="col-md-6 col-sm-6">
-            <div class="portfolio-item"> <a href="#"> <img class="img-portfolio img-responsive" src="https://i.ibb.co/vVCmb0k/4064938.jpg"> </a> </div>
+            <div class="portfolio-item"> <a href="#"> <img class="img-portfolio img-responsive" src="https://i.ibb.co/p2V6zsn/4064938.jpg"> </a> </div>
           </div>
           <div class="col-md-6 col-sm-6">
             <div class="portfolio-item"> <a href="#"> <img class="img-portfolio img-responsive" src="https://i.ibb.co/RyQ2JmY/coronavirus-tips-protection-against-viruses-23-2148493345.jpg"> </a> </div>

@@ -2,7 +2,7 @@
 from flask import Flask
 from flask import request
 import requests
-from flask import render_template ,redirect ,url_for ,jsonify
+from flask import render_template ,redirect ,url_for ,jsonify ,make_response
 # from flask import render_template ,redirect ,url_for ,jsonify
 import os
 from EmailSend import email , send
@@ -64,27 +64,31 @@ port = int(os.getenv('PORT', 8000))
 
 @app.route('/', methods = ['GET','POST'])
 def index():
-	if request.method == 'POST':
-        # print('done')
-		if 'name' in request.form and 'email'  in request.form:
-			name = request.form['name']
-			mail = request.form['email']
-			
-			if mail in maildata: return "<script>window.alert('E-Mail is Already Registered'); window.location.href = '/';</script>"               
-			# detial = { 'name': name , "email" : mail}
-			#   doc = db.create_document(detial)
-			
-			# Use databaseCloudantAdd() - fun to add data in database
-			databaseCloudantAdd(name , mail)
-			
-			maildata.add(mail)
-			email(name,mail)
-			return "<script>window.alert('Successfully Registered'); window.location.href = '/';</script>"
-			# return app.send_static_file("index.html")
-		# else:
-                        # print("")
-	return app.send_static_file("index.html")
+	return redirect('main')
+	#return app.send_static_file("index.html")
 
+@app.route('/main', methods = ['GET','POST'])
+def homepage():
+    if request.method == 'POST':
+        # print('done')
+        if 'name' in request.form and 'email'  in request.form:
+            name = request.form['name']
+            mail = request.form['email']
+            
+            if mail in maildata: return "<script>window.alert('E-Mail is Already Registered'); window.location.href = 'https://coronaupdate-impressive-chipmunk-ma.eu-gb.mybluemix.net/main';</script>"               
+            # detial = { 'name': name , "email" : mail}
+            #   doc = db.create_document(detial)
+            
+            # Use databaseCloudantAdd() - fun to add data in database
+            databaseCloudantAdd(name , mail)
+            
+            maildata.add(mail)
+            email(name,mail)
+            return "<script>window.alert('Successfully Registered'); window.location.href = 'https://coronaupdate-impressive-chipmunk-ma.eu-gb.mybluemix.net/main';</script>"
+            # return app.send_static_file("index.html")
+        # else:
+                        # print("")
+    return render_template("index.html")
 '''
 
 @app.route('/data/')
@@ -114,7 +118,23 @@ def add():
                 send(l , x , link)
                 print("done")
         #maildata.clear()
-        return "<script>window.alert('Done Sir'); window.location.href = '/';</script>" 
+        return "<script>window.alert('Done Sir'); window.location.href = 'https://coronaupdate-impressive-chipmunk-ma.eu-gb.mybluemix.net/main';</script>"
+
+@app.route("/sitemap.xml")
+def sitemap_xml():
+        response= make_response(render_template("sitemap.xml"))
+        response.headers['Content-Type'] = 'application/xml'
+        return response
+
+@app.route("/main/sitemap.xml")
+def sitemapsite():
+        resp= make_response(render_template("site.xml"))
+        resp.headers['Content-Type'] = 'application/xml'
+        return resp
+
+@app.route("/robots.txt")
+def robots_txt():
+        return render_template("robots.txt")
 
 '''
 @app.route('/api/rm/<string:n>/')

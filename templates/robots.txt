@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://coronaupdate-impressive-chipmunk-ma.eu-gb.mybluemix.net/sitemap.xml
