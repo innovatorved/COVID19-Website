@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<meta name="google-site-verification" content="SWKe3rQ2VqxaJPK6gxfjD-Dn-XmlzBrxZiJbgJh97pQ" />
+<title>{% block title %}  {% endblock %}</title>
+<meta name="description" content="CoronaUpdate is non-profit tool that gives the Update of COVID19 in India and its States. and also predicts the next 15 days COVID19 Situation in India.
+We send daily Update of COVID19 situation to Clients Mail .
+In the form of Plots and Bars. For easily Understand and Seeing">
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/animate.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/font-awesome.min.css') }}">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/simple-line-icons.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/owl.carousel.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/owl.theme.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/owl.transitions.css') }}">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,100,200,300,500,600,800,900' rel='stylesheet' type='text/css'>
+<style>
+  hr { 
+      display: block;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      margin-left: auto;
+      margin-right: auto;
+      border-style: inset;
+      border-width: 1px;
+      border-color:pink;
+    } 
+</style>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<div class="main-header" id="main-header">
+  <nav class="navbar mynav navbar-fixed-top">
+    <div class="container">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <a class="navbar-brand" href="/">CoronaUpdate</a> </div>
+    </div>
+  </nav>
+</div>
+<div class="contact" id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-center">
+          <h3 style="padding-top:30px">{% block head %}{% endblock %}</h3>
+        </div>
+      </div>
+      <div style="padding-left:10px;">
+        {% block content %}
+        <!-- Placeholder for Page Content -->
+        {% endblock %}
+      <div>
+
+</div>
+<hr>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"> <span class="copyright">Copyright &copy; CoronaUpdate Team 2020.<br> All Right Reserved</span> </div>
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          <li><a href="https://www.instagram.com/innovatorved?r=nametag" target="_blank"><i class="fa fa-instagram"></i></a> </li>
+          <li><a href="https://www.facebook.com/innovatorved" target="_blank"><i class="fa fa-facebook"></i></a> </li>
+          <li><a href="https://github.com/innovatorved/" target="_blank"><i class="fa fa-github"></i></a> </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li>Designed by <a href="#">Ved Gupta</a> </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src=""></script> 
+
+<script type="text/javascript" src="{{url_for('static', filename='/js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='/js/owl.carousel.min.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='/js/jquery.countTo.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='/js/jquery.waypoints.min.js')}}"></script>
+
+
+ 
+<script>
+$(document).ready(function() {
+     
+      $("#owl-demo").owlCarousel({
+     
+          navigation : false, // Show next and prev buttons
+          slideSpeed : 500,
+		  autoPlay : 3000,
+          paginationSpeed : 400,
+          singleItem:true
+     
+          // "singleItem:true" is a shortcut for:
+          // items : 1, 
+          // itemsDesktop : false,
+          // itemsDesktopSmall : false,
+          // itemsTablet: false,
+          // itemsMobile : false
+     
+      });
+     
+    });
+
+	/*$('.timer').each(count);*/
+	jQuery(function ($) {
+      // custom formatting example
+      $('.timer').data('countToOptions', {
+        formatter: function (value, options) {
+          return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+        }
+      });
+
+
+  // start all the timers
+      $('#testimonials').waypoint(function() {
+    $('.timer').each(count);
+	});
+ 
+      function count(options) {
+        var $this = $(this);
+        options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+        $this.countTo(options);
+      }
+    });
+
+
+	$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+  // Prevent default anchor click behavior
+  event.preventDefault();
+
+  // Store hash
+  var hash = this.hash;
+
+  // Using jQuery's animate() method to add smooth page scroll
+  // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+  $('html, body').animate({
+    scrollTop: $(hash).offset().top
+  }, 900, function(){
+
+    // Add hash (#) to URL when done scrolling (default click behavior)
+    window.location.hash = hash;
+    });
+  });
+})
+</script>
+</body>
+</html>

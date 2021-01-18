@@ -89,6 +89,15 @@ def homepage():
         # else:
                         # print("")
     return render_template("index.html")
+
+@app.route('/privacy-policy')
+def privacy():
+	return render_template("privacy.html")
+
+@app.route('/terms-condition')
+def terms():
+	return render_template("term.html")
+    
 '''
 
 @app.route('/data/')
