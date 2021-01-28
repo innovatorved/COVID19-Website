@@ -8,7 +8,7 @@ import os
 from EmailSend import email , send
 #from time import sleep
 # gives covid data
-from CoronaData import done , retry
+from CoronaDataNew import done , retry
 #from datetime import datetime
 
 # database lib
@@ -46,12 +46,12 @@ res = Result(db.all_docs, include_docs=True)
 for x in res:
         maildata.add(x['doc']['email'])
 print("__Done__")
-'''
+
 
 link = None
 link4 = None
 link5 = None
-
+'''
 # ---------------------------------------------------------------
 # Exract Information From Database
 maildata = databaseCloudantExatract()
@@ -75,7 +75,7 @@ def homepage():
             name = request.form['name']
             mail = request.form['email']
             
-            if mail in maildata: return "<script>window.alert('E-Mail is Already Registered'); window.location.href = 'https://coronaupdate-impressive-chipmunk-ma.eu-gb.mybluemix.net/main';</script>"               
+            if mail in maildata: return "<script>window.alert('E-Mail is Already Registered'); window.location.href = '/main';</script>"               
             # detial = { 'name': name , "email" : mail}
             #   doc = db.create_document(detial)
             
@@ -84,7 +84,7 @@ def homepage():
             
             maildata.add(mail)
             email(name,mail)
-            return "<script>window.alert('Successfully Registered'); window.location.href = 'https://coronaupdate-impressive-chipmunk-ma.eu-gb.mybluemix.net/main';</script>"
+            return "<script>window.alert('Successfully Registered'); window.location.href = '/main';</script>"
             # return app.send_static_file("index.html")
         # else:
                         # print("")
@@ -124,10 +124,10 @@ def add():
         retry()
         l = done()
         for x in maildata:
-                send(l , x , link)
+                send(l , x)
                 print("done")
         #maildata.clear()
-        return "<script>window.alert('Done Sir'); window.location.href = 'https://coronaupdate-impressive-chipmunk-ma.eu-gb.mybluemix.net/main';</script>"
+        return "<script>window.alert('Done Sir'); window.location.href = '/main';</script>"
 
 @app.route("/sitemap.xml")
 def sitemap_xml():
@@ -160,7 +160,7 @@ def dell():
 
 '''
 
-
+'''
 @app.route('/senddata', methods=['POST'])
 def testfn():
     if request.method == 'POST':
@@ -174,7 +174,7 @@ def testfn():
         link = None
         link = [link4 , link5]
         return 'Sucesss', 200
-
+'''
 
 if __name__ == '__main__':
         # host='0.0.0.0',

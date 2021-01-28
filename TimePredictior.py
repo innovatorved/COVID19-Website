@@ -94,6 +94,7 @@ def predict():
     plt.title("Predicted Values for the next 15 Days" , fontsize = 20)
     # pre = list(enumerate(data['y']))[-1][1]
     # dataprint = {}
+    
     add = ""
     for x in range (0, 15):
         add = add + str(list(prediction_dates)[x])[0:10]+" : "+str(pred[x])+"\n"

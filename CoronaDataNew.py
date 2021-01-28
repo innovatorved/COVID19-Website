@@ -245,7 +245,7 @@ def retry():
 #Image.open('testplot.png').save('testplot.jpg','JPEG')
 
 def done():
-    retry()
+    # retry()
     """_it gives the image url file_
         no value entered as parameter
     """
