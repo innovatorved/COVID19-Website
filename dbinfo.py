@@ -5,9 +5,9 @@ from cloudant.result import Result
 # ---------------------------------------------------------------
 # parameters for cloudant database
 
-api = "mtFmNq2TppQsnUV2o8OQqcYEbt1cNnKmUWacbJ9AGK_E"
+api = "wJHlitQHg4gxeflF7LMzWI-oQTXVk8p_ZgmQL3PGkIir"
 
-url_link = "https://b9932f06-c0c7-4666-a9bf-72877bb23d13-bluemix.cloudantnosqldb.appdomain.cloud"
+url_link = "https://3f179eda-91fc-4078-8402-b4172f03ceb1-bluemix.cloudantnosqldb.appdomain.cloud"
 
 # connect
 client = Cloudant.iam(None , api , url = url_link , connect=True)
@@ -40,8 +40,3 @@ def databaseCloudantAdd( name = None , email = None):
     detial = { 'name': name , "email" : email}
     doc = db.create_document(detial)
     return doc
-	
-	
-    
-    
-    
