@@ -1,5 +1,5 @@
  applications:
- - name: CoronaUpdate
+ - name: Covid19Predictor
    random-route: true
    instances : 1
    memory: 256M
