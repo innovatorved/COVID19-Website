@@ -1,3 +1,5 @@
 *.pptx
 credentials.json
 token_gmail_v1.pickle
+.env.local
+.env
