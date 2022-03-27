@@ -1,4 +1,7 @@
 # CoronaUpdate
+
+![Registration Page](https://raw.githubusercontent.com/innovatorved/COVID19-Website/master/img/IMG_20220327_172317.jpg?raw=true)
+
 GCET 3rd Semester (lateral Entry) Project
 
 CoronaUpdate is non-profit tool that gives the Update of COVID19 in India and its States. 
