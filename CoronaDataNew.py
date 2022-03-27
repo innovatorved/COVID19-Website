@@ -41,10 +41,6 @@ def retry():
     web_content = get(url).content
 
     data = json.loads(web_content)
-    # pprint(data)
-    # type(data)
-
-    # ----------------------------- data preprocessing
 
     new_column = ["State_name" , "Active_cases" , "Positive" , "Cured" , "Death" ]
     data_Container = []
@@ -60,26 +56,7 @@ def retry():
         data_Container.append(new)
         
     y = len(data_Container)
-    # print(y)
     del data_Container[y-1]
-    # print(data_Container)
-            
-            
-    # [['Andaman and Nicobar Islands', '88', '4875', '4732', '61'],
-    # ------------------------------------------------------------------------------------
-    '''
-    time = datetime.now()
-    string = str(time)
-    time = string.replace(':',' ')
-    # print(time)
-
-    with open('Datacorona/COVID19'+time+".txt" , 'w') as file:
-        file.write('["State_name" , "Active_cases" , "Positive" , "Cured" , "Death" ]' +)
-        for info in data_Container:
-           file.write(str(info)+)
-    '''
-    # -------------------------------------------------------------
-    # data distributed into parts
     for x in data_Container:
         name.append(x[0])
         active.append(change_to_int(x[1]))
@@ -93,22 +70,6 @@ def retry():
     confirm = np.array(confirm,dtype = "int32")
     death = np.array(death,dtype = "int32")
 
-    '''
-    table = PrettyTable()
-    table.field_names = (new_column)
-
-    for i in data_Container:
-        table.add_row(i)
-    table.add_row(["Total", 
-                   sum(active), 
-                   sum(Cured), 
-                   sum(death),
-                   sum(confirm)])
-    # print(table)
-    '''
-
-    # ------------------------------------------------------------------------
-    # Data Visulalisation
     plt.figure(figsize = (15,10))
     plt.barh(name,active,align = 'center',color='lightblue',edgecolor='blue',label=' ')
     plt.title('Total Active Case StateWise',fontsize = 18)
@@ -200,7 +161,7 @@ def retry():
     confirmed.columns = ['ds','y']
     # confirmed['ds'] = confirmed['ds'].dt.date
     confirmed['ds'] = pd.to_datetime(confirmed['ds'])
-    prop = Prophet(interval_width=0.95)
+    prop = Prophet(interval_width=0.95 , daily_seasonality=True)
     prop.fit(data)
     future = prop.make_future_dataframe(periods=15)
     future.tail(15)

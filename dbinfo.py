@@ -1,13 +1,13 @@
 # database lib
 from cloudant import Cloudant
 from cloudant.result import Result
-
+import os
 # ---------------------------------------------------------------
 # parameters for cloudant database
 
-api = "wJHlitQHg4gxeflF7LMzWI-oQTXVk8p_ZgmQL3PGkIir"
+api = os.environ.get('CLOUDANT_DATABASE_KEY')
 
-url_link = "https://3f179eda-91fc-4078-8402-b4172f03ceb1-bluemix.cloudantnosqldb.appdomain.cloud"
+url_link = os.environ.get('CLOUDANT_URL')
 
 # connect
 client = Cloudant.iam(None , api , url = url_link , connect=True)
@@ -16,6 +16,7 @@ client = Cloudant.iam(None , api , url = url_link , connect=True)
 Access Database Info
 '''
 db = client['info']
+dbMsg = client['msg']
 # Access a database
 print("Accessing the data . . .")
 
@@ -40,3 +41,12 @@ def databaseCloudantAdd( name = None , email = None):
     detial = { 'name': name , "email" : email}
     doc = db.create_document(detial)
     return doc
+
+def msgToMe( name = None , email = None , msg = None):
+    """Add Messages of Clients in Database"""
+    doc = "__ValueError - Please pass Name & Email__"
+    if type(name) != str and type(email) != str and type(msg) != str: return doc
+    detial = { 'name': name , "email" : email , "Messge" : msg}
+    doc = dbMsg.create_document(detial)
+    return doc
+    
